@@ -163,75 +163,7 @@
       <div class="menu__phone-item"><a href="tel:+74952331763"> +7 495 233-17-63</a></div>
     </div>
   </div>
-  <div class="modelIndexExamplesSlider display-n">
-    <div class="modelIndexExamplesSlider-close">
-       <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M39 13L13 39" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M13 13L39 39" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-    </div>
-    <div class="modelIndexExamplesSlider__slider"> 
-      <div class="swiper modelIndexExamplesSliderBlock">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"> 
-            <div class="modelIndexExamplesSlider__slider-item"> <img src="<?php bloginfo('template_directory') ?>/img/example-1.png" alt="img"></div>
-          </div>
-          <div class="swiper-slide"> 
-            <div class="modelIndexExamplesSlider__slider-item"> <img src="<?php bloginfo('template_directory') ?>/img/example-2.png" alt="img"></div>
-          </div>
-          <div class="swiper-slide"> 
-            <div class="modelIndexExamplesSlider__slider-item"> <img src="<?php bloginfo('template_directory') ?>/img/example-3.png" alt="img"></div>
-          </div>
-          <div class="swiper-slide"> 
-            <div class="modelIndexExamplesSlider__slider-item"> <img src="<?php bloginfo('template_directory') ?>/img/example-4.png" alt="img"></div>
-          </div>
-          <div class="swiper-slide"> 
-            <div class="modelIndexExamplesSlider__slider-item"> <img src="<?php bloginfo('template_directory') ?>/img/example-5.png" alt="img"></div>
-          </div>
-          <div class="swiper-slide"> 
-            <div class="modelIndexExamplesSlider__slider-item"> <img src="<?php bloginfo('template_directory') ?>/img/example-6.png" alt="img"></div>
-          </div>
-          <div class="swiper-slide"> 
-            <div class="modelIndexExamplesSlider__slider-item"> <img src="<?php bloginfo('template_directory') ?>/img/example-7.png" alt="img"></div>
-          </div>
-          <div class="swiper-slide"> 
-            <div class="modelIndexExamplesSlider__slider-item"> <img src="<?php bloginfo('template_directory') ?>/img/example-8.png" alt="img"></div>
-          </div>
-          <div class="swiper-slide"> 
-            <div class="modelIndexExamplesSlider__slider-item"> <img src="<?php bloginfo('template_directory') ?>/img/example-9.png" alt="img"></div>
-          </div>
-          <div class="swiper-slide"> 
-            <div class="modelIndexExamplesSlider__slider-item"><img src="<?php bloginfo('template_directory') ?>/img/example-10.png" alt="img"></div>
-          </div>
-          <div class="swiper-slide"> 
-            <div class="modelIndexExamplesSlider__slider-item"><img src="<?php bloginfo('template_directory') ?>/img/example-11.png" alt="img"></div>
-          </div>
-          <div class="swiper-slide"> 
-            <div class="modelIndexExamplesSlider__slider-item"><img src="<?php bloginfo('template_directory') ?>/img/example-12.png" alt="img"></div>
-          </div>
-          <div class="swiper-slide"> 
-            <div class="modelIndexExamplesSlider__slider-item"><img src="<?php bloginfo('template_directory') ?>/img/example-13.png" alt="img"></div>
-          </div>
-          <div class="swiper-slide"> 
-            <div class="modelIndexExamplesSlider__slider-item"><img src="<?php bloginfo('template_directory') ?>/img/example-14.png" alt="img"></div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-controls"> 
-        <div class="swiper-button-next">
-           <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M6.53033 5.46967C6.82322 5.76256 6.82322 6.23744 6.53033 6.53033L1.75736 11.3033C1.46447 11.5962 0.989593 11.5962 0.696699 11.3033C0.403806 11.0104 0.403806 10.5355 0.696699 10.2426L4.93934 6L0.696699 1.75736C0.403806 1.46447 0.403806 0.989593 0.696699 0.696699C0.989593 0.403806 1.46447 0.403806 1.75736 0.696699L6.53033 5.46967ZM5 5.25H6V6.75H5V5.25Z" fill="black"/>
-</svg>
-        </div>
-        <div class="swiper-button-prev">
-           <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M6.53033 5.46967C6.82322 5.76256 6.82322 6.23744 6.53033 6.53033L1.75736 11.3033C1.46447 11.5962 0.989593 11.5962 0.696699 11.3033C0.403806 11.0104 0.403806 10.5355 0.696699 10.2426L4.93934 6L0.696699 1.75736C0.403806 1.46447 0.403806 0.989593 0.696699 0.696699C0.989593 0.403806 1.46447 0.403806 1.75736 0.696699L6.53033 5.46967ZM5 5.25H6V6.75H5V5.25Z" fill="black"/>
-</svg>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-    </div>
-  </div>
+  
   <div class="modelOrderCall display-n">
     <form class="modelOrderCall__block"> 
       <div class="modelOrderCall__block-close">

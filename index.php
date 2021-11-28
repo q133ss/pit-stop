@@ -461,51 +461,29 @@ get_header();
         <div class="ind-shop__block-catalog"> 
           <div class="swiper indexShop">
             <div class="swiper-wrapper">
+
+              <?php
+              //Товары
+              $loop = new WP_Query( array(
+              'post_type' => 'product',
+              'posts_per_page' => 10,
+              'orderby' => 'menu_order',
+              'order' => 'ASC',
+              ));
+
+              while ( $loop->have_posts() ): $loop->the_post(); ?>
               <div class="swiper-slide wow fadeInUp animated" data-wow-delay="0.8s">
                 <div class="ind-shop__block-catalog-item">
-                  <div class="ind-shop__block-catalog-item-img"> <img src="<?php bloginfo('template_directory'); ?>/img/shops.png" alt="img"></div>
+                  <div class="ind-shop__block-catalog-item-img"> <img src="<?php the_post_thumbnail_url(); ?>" alt="img"></div>
                   <div class="ind-shop__block-catalog-item-text"> 
-                    <h3>Шины</h3>
-                    <p>4690₽</p>
+                    <h3><?php the_title(); ?></h3>
+                    <p><?php woocommerce_template_loop_price(); ?></p>
                   </div>
                 </div>
               </div>
-              <div class="swiper-slide wow fadeInUp animated" data-wow-delay="1.2s">
-                <div class="ind-shop__block-catalog-item">
-                  <div class="ind-shop__block-catalog-item-img"> <img src="<?php bloginfo('template_directory'); ?>/img/shops.png" alt="img"></div>
-                  <div class="ind-shop__block-catalog-item-text"> 
-                    <h3>Шины</h3>
-                    <p>4690₽</p>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide wow fadeInUp animated" data-wow-delay="1.6s">
-                <div class="ind-shop__block-catalog-item">
-                  <div class="ind-shop__block-catalog-item-img"> <img src="<?php bloginfo('template_directory'); ?>/img/shops.png" alt="img"></div>
-                  <div class="ind-shop__block-catalog-item-text"> 
-                    <h3>Шины</h3>
-                    <p>4690₽</p>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide wow fadeInUp animated" data-wow-delay="2.0s">
-                <div class="ind-shop__block-catalog-item">
-                  <div class="ind-shop__block-catalog-item-img"> <img src="<?php bloginfo('template_directory'); ?>/img/shops.png" alt="img"></div>
-                  <div class="ind-shop__block-catalog-item-text"> 
-                    <h3>Шины</h3>
-                    <p>4690₽</p>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide wow fadeInUp animated" data-wow-delay="2.4s">
-                <div class="ind-shop__block-catalog-item">
-                  <div class="ind-shop__block-catalog-item-img"> <img src="<?php bloginfo('template_directory'); ?>/img/shops.png" alt="img"></div>
-                  <div class="ind-shop__block-catalog-item-text"> 
-                    <h3>Шины</h3>
-                    <p>4690₽</p>
-                  </div>
-                </div>
-              </div>
+              <?php endwhile; wp_reset_postdata(); ?>
+
+
             </div>
           </div>
           <div class="swiper-controls wow fadeInRight animated" data-wow-delay="2.8s">
@@ -534,45 +512,203 @@ get_header();
           <li class="ind-examples__block-tabs-item" id="indexExampleTabsElement-5">Аргоновая сварка</li>
         </ul>
         <ul class="ind-examples__block-catalog wow fadeInUp animated" id="indexExampleTabsBlock-1" data-wow-delay="0.8s">
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-1"><img src="<?php bloginfo('template_directory'); ?>/img/examples-1.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-2"><img src="<?php bloginfo('template_directory'); ?>/img/examples-2.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-3"><img src="<?php bloginfo('template_directory'); ?>/img/examples-3.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-4"><img src="<?php bloginfo('template_directory'); ?>/img/examples-4.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-5"><img src="<?php bloginfo('template_directory'); ?>/img/examples-5.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-6"><img src="<?php bloginfo('template_directory'); ?>/img/examples-6.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-7"><img src="<?php bloginfo('template_directory'); ?>/img/examples-7.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-8"><img src="<?php bloginfo('template_directory'); ?>/img/examples-8.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-9"><img src="<?php bloginfo('template_directory'); ?>/img/examples-9.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-10"><img src="<?php bloginfo('template_directory'); ?>/img/examples-10.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-11"><img src="<?php bloginfo('template_directory'); ?>/img/examples-11.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-12"><img src="<?php bloginfo('template_directory'); ?>/img/examples-12.png" alt="img"></li>
+          <?php
+              $gallery_first = array(
+
+              'post_type' => 'our_work',
+              'posts_per_page' => 12,
+              'order' => 'ASC'
+              );
+        
+              $gallery_first_ = new WP_Query( $gallery_first );
+              if( $gallery_first_->have_posts() ){
+              while( $gallery_first_->have_posts() ) {
+                $gallery_first_->the_post();
+              
+              ?>
+          <li class="ind-examples__block-catalog-item diskSlidersAboutItemsElement-<?php the_ID(); ?>"><img src="<?php the_post_thumbnail_url(); ?>" alt="img"></li>
+        <?php } wp_reset_postdata(); } ?>
+          
         </ul>
+
         <ul class="ind-examples__block-catalog display-n" id="indexExampleTabsBlock-2">
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-13"><img src="<?php bloginfo('template_directory'); ?>/img/examples-1.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-14"><img src="<?php bloginfo('template_directory'); ?>/img/examples-2.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-15"><img src="<?php bloginfo('template_directory'); ?>/img/examples-3.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-16"><img src="<?php bloginfo('template_directory'); ?>/img/examples-4.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-17"><img src="<?php bloginfo('template_directory'); ?>/img/examples-5.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-18"><img src="<?php bloginfo('template_directory'); ?>/img/examples-6.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-19"><img src="<?php bloginfo('template_directory'); ?>/img/examples-7.png" alt="img"></li>
+
+
+          <?php
+              $pokraska_gallery = array(
+
+              'post_type' => 'our_work',
+              'posts_per_page' => 12,
+              'order' => 'ASC',
+              'tax_query' => array(
+                array(
+                    'taxonomy' => 'cats',
+                    'field'    => 'slug',
+                    'terms'    => 'pokraska',
+                ),
+              ),
+              );
+              $pokraska_count = 2;
+              $gallery_query_2 = new WP_Query( $pokraska_gallery );
+              if( $gallery_query_2->have_posts() ){
+              while( $gallery_query_2->have_posts() ) {
+                $gallery_query_2->the_post();
+                $pokraska_count++;
+              ?>
+          <li class="ind-examples__block-catalog-item diskSlidersAboutItemsElement-<?php the_ID(); ?>"><img src="<?php the_post_thumbnail_url(); ?>" alt="img"></li>
+          <?php }wp_reset_postdata();} ?>
+
+
+
         </ul>
         <ul class="ind-examples__block-catalog display-n" id="indexExampleTabsBlock-3">
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-20"><img src="<?php bloginfo('template_directory'); ?>/img/examples-8.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-21"><img src="<?php bloginfo('template_directory'); ?>/img/examples-9.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-22"><img src="<?php bloginfo('template_directory'); ?>/img/examples-10.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-23"><img src="<?php bloginfo('template_directory'); ?>/img/examples-11.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-24"><img src="<?php bloginfo('template_directory'); ?>/img/examples-12.png" alt="img"></li>
+          <?php
+              $polirovka_gallery = array(
+
+              'post_type' => 'our_work',
+              'posts_per_page' => 12,
+              'order' => 'ASC',
+              'tax_query' => array(
+                array(
+                    'taxonomy' => 'cats',
+                    'field'    => 'slug',
+                    'terms'    => 'polirovka',
+                ),
+              ),
+              );
+              $polirovka_count = 2;
+              $gallery_query_3 = new WP_Query( $polirovka_gallery );
+              if( $gallery_query_3->have_posts() ){
+              while( $gallery_query_3->have_posts() ) {
+                $gallery_query_3->the_post();
+                $polirovka_count++;
+              ?>
+          <li class="ind-examples__block-catalog-item diskSlidersAboutItemsElement-<?php the_ID(); ?>"><img src="<?php the_post_thumbnail_url(); ?>" alt="img"></li>
+          <?php }wp_reset_postdata();} ?>
+
         </ul>
         <ul class="ind-examples__block-catalog display-n" id="indexExampleTabsBlock-4">
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-25"><img src="<?php bloginfo('template_directory'); ?>/img/examples-13.png" alt="img"></li>
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-26"><img src="<?php bloginfo('template_directory'); ?>/img/examples-14.png" alt="img"></li>
+           <?php
+              $remont_gallery = array(
+
+              'post_type' => 'our_work',
+              'posts_per_page' => 12,
+              'order' => 'ASC',
+              'tax_query' => array(
+                array(
+                    'taxonomy' => 'cats',
+                    'field'    => 'slug',
+                    'terms'    => 'remont-diskov',
+                ),
+              ),
+              );
+              $gallery_query_4 = new WP_Query( $remont_gallery );
+              if( $gallery_query_4->have_posts() ){
+              while( $gallery_query_4->have_posts() ) {
+                $gallery_query_4->the_post();
+              ?>
+          <li class="ind-examples__block-catalog-item diskSlidersAboutItemsElement-<?php the_ID(); ?>"><img src="<?php the_post_thumbnail_url(); ?>" alt="img"></li>
+          <?php } wp_reset_postdata(); } ?>
         </ul>
         <ul class="ind-examples__block-catalog display-n" id="indexExampleTabsBlock-5">
-          <li class="ind-examples__block-catalog-item" id="diskSlidersAboutItemsElement-27"><img src="<?php bloginfo('template_directory'); ?>/img/examples-13.png" alt="img"></li>
+          <?php
+              $svarka = array(
+
+              'post_type' => 'our_work',
+              'posts_per_page' => 12,
+              'order' => 'ASC',
+              'tax_query' => array(
+                array(
+                    'taxonomy' => 'cats',
+                    'field'    => 'slug',
+                    'terms'    => 'remont-diskov',
+                ),
+              ),
+              );
+              $gallery_query_5 = new WP_Query( $svarka );
+              if( $gallery_query_5->have_posts() ){
+              while( $gallery_query_5->have_posts() ) {
+                $gallery_query_5->the_post();
+              ?>
+          <li class="ind-examples__block-catalog-item diskSlidersAboutItemsElement-<?php the_ID(); ?>"><img src="<?php the_post_thumbnail_url(); ?>" alt="img"></li>
+          <?php } wp_reset_postdata(); } ?>
         </ul>
       </div>
     </div>
   </section>
+
+
+
+<!-- Our Works Gallery -->
+  <div class="modelIndexExamplesSlider display-n">
+    <div class="modelIndexExamplesSlider-close">
+       <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M39 13L13 39" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13 13L39 39" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+    </div>
+    <div class="modelIndexExamplesSlider__slider"> 
+      <div class="swiper modelIndexExamplesSliderBlock">
+        <div class="swiper-wrapper">
+
+          <?php
+              $gallery_script = array(
+
+              'post_type' => 'our_work',
+              'posts_per_page' => 999,
+              'order' => 'ASC'
+              );
+              $count = 0;
+              $gallery_script_ = new WP_Query( $gallery_script );
+              if( $gallery_script_->have_posts() ){
+              while( $gallery_script_->have_posts() ) {
+                $gallery_script_->the_post();
+                $count++;
+              ?>
+          <div class="swiper-slide"> 
+            <div class="modelIndexExamplesSlider__slider-item"> <img src="<?php the_post_thumbnail_url(); ?>" alt="img"></div>
+          </div>
+
+          <script>
+            $('.diskSlidersAboutItemsElement-<?php the_ID(); ?>').on('click', function() {
+            $('.modelIndexExamplesSlider').removeClass('display-n')
+            $('body').css('overflow', 'hidden')
+
+            let modelIndexExamplesSliderBlockCount = <?php echo $count-1; ?>;
+            var modelIndexExamplesSliderBlock = new Swiper(".modelIndexExamplesSliderBlock", {
+                // loop: true,
+                navigation: {
+                    nextEl: ".modelIndexExamplesSlider__slider   .swiper-controls .swiper-button-next",
+                    prevEl: ".modelIndexExamplesSlider__slider   .swiper-controls .swiper-button-prev",
+                },
+                // pagination: {
+                //     el: ".disk-slider__block-wrapper .swiper-controls .swiper-pagination",
+                // },
+                keyboard: true,
+                slidesPerView: 1,
+                spaceBetween: 0,
+                initialSlide: modelIndexExamplesSliderBlockCount,
+            });
+            });
+          </script>
+          <?php }wp_reset_postdata();} ?>
+        </div>
+      </div>
+      <div class="swiper-controls"> 
+        <div class="swiper-button-next">
+           <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.53033 5.46967C6.82322 5.76256 6.82322 6.23744 6.53033 6.53033L1.75736 11.3033C1.46447 11.5962 0.989593 11.5962 0.696699 11.3033C0.403806 11.0104 0.403806 10.5355 0.696699 10.2426L4.93934 6L0.696699 1.75736C0.403806 1.46447 0.403806 0.989593 0.696699 0.696699C0.989593 0.403806 1.46447 0.403806 1.75736 0.696699L6.53033 5.46967ZM5 5.25H6V6.75H5V5.25Z" fill="black"/>
+</svg>
+        </div>
+        <div class="swiper-button-prev">
+           <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.53033 5.46967C6.82322 5.76256 6.82322 6.23744 6.53033 6.53033L1.75736 11.3033C1.46447 11.5962 0.989593 11.5962 0.696699 11.3033C0.403806 11.0104 0.403806 10.5355 0.696699 10.2426L4.93934 6L0.696699 1.75736C0.403806 1.46447 0.403806 0.989593 0.696699 0.696699C0.989593 0.403806 1.46447 0.403806 1.75736 0.696699L6.53033 5.46967ZM5 5.25H6V6.75H5V5.25Z" fill="black"/>
+</svg>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
 
 <?php
 get_footer();
