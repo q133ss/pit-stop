@@ -271,7 +271,7 @@ get_header();
     </div>
   </section>
   <section class="ind-price"> 
-    <div class="containers"> 
+    <div class="containers">
       <div class="ind-price__block"> 
         <div class="ind-price__block-add wow fadeInLeft animated" data-wow-delay="0.8s">003</div>
         <div class="ind-price__block-title wow fadeInLeft animated" data-wow-delay="0.8s">Расчет стоимости</div>
@@ -291,8 +291,8 @@ get_header();
           </div>
         </div>
         <div class="ind-price__block-adds wow fadeInUp animated" data-wow-delay="0.8s">
-          <select id="type">
-            <option value=""></option>
+          <select id="type" onchange="calc()">
+            <option value="" selected></option>
             <option value="Литой">Литой</option>
             <option value="Штампованный">Штампованный</option>
           </select>
@@ -429,10 +429,11 @@ get_header();
         </div>
         <div class="ind-price__block-banner wow fadeInUp animated" data-wow-delay="0.8s">
           <h3>Итого:</h3>
-          <p>4690₽</p>
+          <p>0₽</p>
           <button class="ind-price__block-banner-btn"> <a href="#">Заказать</a></button>
         </div>
       </div>
+
     </div>
   </section>
   <section class="ind-abouts"> 
@@ -709,6 +710,8 @@ get_header();
       </div>
     </div>
   </div>
+
+  
 
 <?php
 get_footer();

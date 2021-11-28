@@ -184,5 +184,29 @@
     </form>
   </div>
   <?php wp_footer(); ?>
+
+  <script>
+    $(document).ready(function(){
+  $('.type-select-element').click(function(){
+      let type = $('#type').val()
+      $.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            type: "POST",
+            data: {
+              action: 'main_calc',
+                type:type
+            },
+            success: (data) => {
+              alert('Ajax:'+data)
+              //console.log(data)
+            },
+            error: function(request, status, error) {
+                var statusCode = request.responseText;
+                console.log(statusCode);
+            }
+        })
+    })
+})
+  </script>
 </body>
 </html>
