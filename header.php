@@ -39,7 +39,7 @@
   <header class="header wow fadeInDown animated" data-wow-delay="0.8s">
     <div class="containers"> 
       <div class="header__block"> 
-        <div class="header__block-logo"> <a href="index.html">PIT-STOP </a></div>
+        <div class="header__block-logo"> <a href="/">PIT-STOP </a></div>
         <ul class="header__block-list">
           <li class="header__block-list-item" id="headerServicesButton"><a href="#">УСЛУГИ </a></li>
           <li class="header__block-list-item"> <a href="price.html">ЦЕНЫ </a></li>
@@ -51,25 +51,52 @@
         <div class="header__block-services display-n" id="headerServices">
           <ul class="header__block-services-list">
             <div class="header__block-services-list-title">ПОКРАСКА</div>
-            <li class="header__block-services-list-item"> <a href="disks.html">Покраска дисков</a></li>
-            <li class="header__block-services-list-item"> <a href="painting.html">Покраска изделий</a></li>
-            <li class="header__block-services-list-item"> <a href="polishing.html">Алмазная шлифовка</a></li>
-            <li class="header__block-services-list-item"> <a href="price.html">Калькулятор стоимости</a></li>
-            <li class="header__block-services-list-item"> <a href="constructor.html">Подбор дисков по цвету</a></li>
-            <li class="header__block-services-list-item"> <a href="delivery.html">Доставка</a></li>
+            <?php
+          $pokraska_menu = wp_nav_menu([
+            'menu' => 'pokraska',
+            'echo' => false,
+            'container'       => false,
+            'menu_class' => 'header__block-services-list-item',
+            'items_wrap'      => '%3$s',
+            'add_li_class'  => 'header__block-services-list-item'
+          ]);
+
+          echo strip_tags($pokraska_menu, '<li> <a>');
+          ?>
+         
           </ul>
           <ul class="header__block-services-list">
             <div class="header__block-services-list-title">ШИНОМОНТАЖ</div>
-            <li class="header__block-services-list-item"> <a href="alloy.html">Ремонт дисков</a></li>
-            <li class="header__block-services-list-item"> <a href="balance.html">Балансировка колес</a></li>
-            <li class="header__block-services-list-item"> <a href="tires.html">Вулканизация шин</a></li>
-            <li class="header__block-services-list-item"> <a href="hernia.html">Ремонт боковых порезов</a></li>
+            <?php
+            //Шиномонтаж
+            $pokraska_menu = wp_nav_menu([
+            'menu' => 'shinomontazh',
+            'echo' => false,
+            'container'       => false,
+            'menu_class' => 'header__block-services-list-item',
+            'items_wrap'      => '%3$s',
+            'add_li_class'  => 'header__block-services-list-item'
+          ]);
+
+          echo strip_tags($pokraska_menu, '<li> <a>');
+          ?>
+            
           </ul>
           <ul class="header__block-services-list">
             <div class="header__block-services-list-title">ДРУГИЕ УСЛУГИ</div>
-            <li class="header__block-services-list-item"> <a href="season.html">Хранение шин</a></li>
-            <li class="header__block-services-list-item"> <a href="refill.html">Заправка автокондиционеров</a></li>
-            <li class="header__block-services-list-item"> <a href="conditioner.html">Ремонт автокондиционеров</a></li>
+            <?php
+            //Другие услуги
+            $pokraska_menu = wp_nav_menu([
+            'menu' => 'other',
+            'echo' => false,
+            'container'       => false,
+            'menu_class' => 'header__block-services-list-item',
+            'items_wrap'      => '%3$s',
+            'add_li_class'  => 'header__block-services-list-item'
+          ]);
+
+          echo strip_tags($pokraska_menu, '<li> <a>');
+          ?>
           </ul>
         </div>
         <div class="header__block-menu" id="menuOpen"><svg width="38" height="13" viewBox="0 0 38 13" fill="none" xmlns="http://www.w3.org/2000/svg">

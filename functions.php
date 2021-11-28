@@ -179,10 +179,41 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 
-// правильный способ подключить стили и скрипты
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
-// add_action('wp_print_styles', 'theme_name_scripts'); // можно использовать этот хук он более поздний
 function theme_name_scripts() {
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/css/style.min.css');
 	wp_enqueue_script( 'script', get_template_directory_uri() . '/js/script.min.js', array(), '1.0.0', true );
+}
+
+
+//Class to LI on nav menu
+function add_additional_class_on_li($classes, $item, $args) {
+    if(isset($args->add_li_class)) {
+        $classes[] = $args->add_li_class;
+    }
+    return $classes;
+}
+add_filter('nav_menu_css_class', 'add_additional_class_on_li', 1, 3);
+
+
+//TGM
+require_once dirname( __FILE__ ) . '/class-tgm-plugin-activation.php';
+  
+add_action( 'tgmpa_register', 'mytheme_require_plugins' );
+  
+function mytheme_require_plugins() {
+  
+    $plugins = array(
+    array(
+        'name'               => 'Pitstop Core plugin',
+        'slug'               => 'pitstop-core',
+        'source'             => get_stylesheet_directory() . '/plugins/pitstop-core.zip', // The "internal" source of the plugin.
+        'required'           => true, // this plugin is required
+        'force_activation'   => true, // this plugin is going to stay activated unless the user switches to another theme
+    )
+);
+    $config = array( /* The array to configure TGM Plugin Activation */ );
+  
+    tgmpa( $plugins, $config );
+  
 }

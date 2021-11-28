@@ -621,7 +621,7 @@ get_header();
                 array(
                     'taxonomy' => 'cats',
                     'field'    => 'slug',
-                    'terms'    => 'remont-diskov',
+                    'terms'    => 'argonovaya-svarka',
                 ),
               ),
               );
