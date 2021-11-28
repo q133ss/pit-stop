@@ -121,42 +121,40 @@ get_header();
         <div class="ind-slider__block-slider" id="headerSliderTabsSlider-1">
           <div class="swiper indexSliderCars-1">
             <div class="swiper-wrapper">
-              <div class="swiper-slide wow fadeInUp animated" data-wow-delay="1.0s">
+              <?php
+              //Покраска
+              $uslugi = array(
+
+              'post_type' => 'uslugi',
+              'posts_per_page' => 10,
+              'order' => 'ASC',
+              'tax_query' => array(
+                array(
+                    'taxonomy' => 'taxonomy',
+                    'field'    => 'slug',
+                    'terms'    => 'pokraska',
+                ),
+              ),
+              );
+              $my_query = new WP_Query( $uslugi );
+              if( $my_query->have_posts() ){
+              while( $my_query->have_posts() ) {
+                $my_query->the_post();
+              ?>
+              <div class="swiper-slide wow fadeInUp animated" data-wow-delay="<?php echo $key-0.8; ?>s">
                 <div class="ind-slider__block-slider-item">
-                  <div class="ind-slider__block-slider-item-img"> <img src="<?php bloginfo('template_directory'); ?>/img/slider-1.png" alt="img"></div>
+                  <div class="ind-slider__block-slider-item-img"> <img src="<?php the_post_thumbnail_url(); ?>" alt="img"></div>
                   <div class="ind-slider__block-slider-item-text"> 
-                    <div class="ind-slider__block-slider-item-title">Покраска дисков</div>
-                    <div class="ind-slider__block-slider-item-text">Порошковая покраска дисков за 1 день на собственном оборудовании</div><a class="ind-slider__block-slider-item-link" href="#">
+                    <div class="ind-slider__block-slider-item-title"><?php the_title(); ?></div>
+                    <div class="ind-slider__block-slider-item-text"><?php the_excerpt(); ?></div><a class="ind-slider__block-slider-item-link" href="#">
                        <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M2.5978 0V2.38704H13.5932L0 14.3474L1.82215 16.0303L15.4154 4.0699V14.2248H18V0H2.5978Z" fill="white"/>
 </svg></a>
                   </div>
                 </div>
               </div>
-              <div class="swiper-slide wow fadeInUp animated" data-wow-delay="1.5s">
-                <div class="ind-slider__block-slider-item">
-                  <div class="ind-slider__block-slider-item-img"> <img src="<?php bloginfo('template_directory'); ?>/img/slider-2.png" alt="img"></div>
-                  <div class="ind-slider__block-slider-item-text"> 
-                    <div class="ind-slider__block-slider-item-title">Покраска изделий</div>
-                    <div class="ind-slider__block-slider-item-text">Порошковая покраска изделий и деталей</div><a class="ind-slider__block-slider-item-link" href="#">
-                       <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.5978 0V2.38704H13.5932L0 14.3474L1.82215 16.0303L15.4154 4.0699V14.2248H18V0H2.5978Z" fill="white"/>
-</svg></a>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide wow fadeInUp animated" data-wow-delay="2.0s">
-                <div class="ind-slider__block-slider-item">
-                  <div class="ind-slider__block-slider-item-img"> <img src="<?php bloginfo('template_directory'); ?>/img/slider-3.png" alt="img"></div>
-                  <div class="ind-slider__block-slider-item-text"> 
-                    <div class="ind-slider__block-slider-item-title">Алмазная шлифовка</div>
-                    <div class="ind-slider__block-slider-item-text">Алмазная шлифовка дисков с порошковой покраской</div><a class="ind-slider__block-slider-item-link" href="#">
-                       <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.5978 0V2.38704H13.5932L0 14.3474L1.82215 16.0303L15.4154 4.0699V14.2248H18V0H2.5978Z" fill="white"/>
-</svg></a>
-                  </div>
-                </div>
-              </div>
+              <?php }wp_reset_postdata();} ?>
+
             </div>
           </div>
           <div class="swiper-controls display-n" id="headerSliderTabsControlsSlider-1">
@@ -172,66 +170,39 @@ get_header();
         <div class="ind-slider__block-slider display-n" id="headerSliderTabsSlider-2">
           <div class="swiper indexSliderCars-2">
             <div class="swiper-wrapper">
-              <div class="swiper-slide"> 
+              <?php
+              //Шиномонтаж
+              $uslugi = array(
+
+              'post_type' => 'uslugi',
+              'posts_per_page' => 10,
+              'order' => 'ASC',
+              'tax_query' => array(
+                array(
+                    'taxonomy' => 'taxonomy',
+                    'field'    => 'slug',
+                    'terms'    => 'shinomontaj',
+                ),
+              ),
+              );
+              $my_query = new WP_Query( $uslugi );
+              if( $my_query->have_posts() ){
+              while( $my_query->have_posts() ) {
+                $my_query->the_post();
+              ?>
+              <div class="swiper-slide">
                 <div class="ind-slider__block-slider-item">
-                  <div class="ind-slider__block-slider-item-img"> <img src="<?php bloginfo('template_directory'); ?>/img/slider-4.png" alt="img"></div>
+                  <div class="ind-slider__block-slider-item-img"> <img src="<?php the_post_thumbnail_url(); ?>" alt="img"></div>
                   <div class="ind-slider__block-slider-item-text"> 
-                    <div class="ind-slider__block-slider-item-title">Ремонт дисков</div>
-                    <div class="ind-slider__block-slider-item-text">Ремонтируем литые и штампованные автомобильные диски</div><a class="ind-slider__block-slider-item-link" href="#">
+                    <div class="ind-slider__block-slider-item-title"><?php the_title(); ?></div>
+                    <div class="ind-slider__block-slider-item-text"><?php the_excerpt(); ?></div><a class="ind-slider__block-slider-item-link" href="#">
                        <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M2.5978 0V2.38704H13.5932L0 14.3474L1.82215 16.0303L15.4154 4.0699V14.2248H18V0H2.5978Z" fill="white"/>
 </svg></a>
                   </div>
                 </div>
               </div>
-              <div class="swiper-slide"> 
-                <div class="ind-slider__block-slider-item">
-                  <div class="ind-slider__block-slider-item-img"> <img src="<?php bloginfo('template_directory'); ?>/img/slider-5.png" alt="img"></div>
-                  <div class="ind-slider__block-slider-item-text"> 
-                    <div class="ind-slider__block-slider-item-title">Балансировка колес</div>
-                    <div class="ind-slider__block-slider-item-text">Балансировка колес на современном оборудовании</div><a class="ind-slider__block-slider-item-link" href="#">
-                       <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.5978 0V2.38704H13.5932L0 14.3474L1.82215 16.0303L15.4154 4.0699V14.2248H18V0H2.5978Z" fill="white"/>
-</svg></a>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide"> 
-                <div class="ind-slider__block-slider-item">
-                  <div class="ind-slider__block-slider-item-img"> <img src="<?php bloginfo('template_directory'); ?>/img/slider-6.png" alt="img"></div>
-                  <div class="ind-slider__block-slider-item-text"> 
-                    <div class="ind-slider__block-slider-item-title">Вулканизация шин</div>
-                    <div class="ind-slider__block-slider-item-text">Недорогая и быстрая вулканизация шин с пожизненной гарантией</div><a class="ind-slider__block-slider-item-link" href="#">
-                       <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.5978 0V2.38704H13.5932L0 14.3474L1.82215 16.0303L15.4154 4.0699V14.2248H18V0H2.5978Z" fill="white"/>
-</svg></a>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide"> 
-                <div class="ind-slider__block-slider-item">
-                  <div class="ind-slider__block-slider-item-img"> <img src="<?php bloginfo('template_directory'); ?>/img/slider-7.png" alt="img"></div>
-                  <div class="ind-slider__block-slider-item-text"> 
-                    <div class="ind-slider__block-slider-item-title">Ремонт боковых порезов</div>
-                    <div class="ind-slider__block-slider-item-text">Качественный и быстрый ремонт автомобильных кондиционеров</div><a class="ind-slider__block-slider-item-link" href="#">
-                       <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.5978 0V2.38704H13.5932L0 14.3474L1.82215 16.0303L15.4154 4.0699V14.2248H18V0H2.5978Z" fill="white"/>
-</svg></a>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide"> 
-                <div class="ind-slider__block-slider-item">
-                  <div class="ind-slider__block-slider-item-img"> <img src="<?php bloginfo('template_directory'); ?>/img/slider-8.png" alt="img"></div>
-                  <div class="ind-slider__block-slider-item-text"> 
-                    <div class="ind-slider__block-slider-item-title">Аргонная сварка</div>
-                    <div class="ind-slider__block-slider-item-text">Сварка любых металлических деталей</div><a class="ind-slider__block-slider-item-link" href="#">
-                       <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.5978 0V2.38704H13.5932L0 14.3474L1.82215 16.0303L15.4154 4.0699V14.2248H18V0H2.5978Z" fill="white"/>
-</svg></a>
-                  </div>
-                </div>
-              </div>
+              <?php }wp_reset_postdata();} ?>
             </div>
           </div>
           <div class="swiper-controls display-n" id="headerSliderTabsControlsSlider-2">
@@ -247,42 +218,40 @@ get_header();
         <div class="ind-slider__block-slider display-n" id="headerSliderTabsSlider-3">
           <div class="swiper indexSliderCars-3">
             <div class="swiper-wrapper">
+              <?php
+              //другие услуги
+              $uslugi = array(
+
+              'post_type' => 'uslugi',
+              'posts_per_page' => 10,
+              'order' => 'ASC',
+              'tax_query' => array(
+                array(
+                    'taxonomy' => 'taxonomy',
+                    'field'    => 'slug',
+                    'terms'    => 'other',
+                ),
+              ),
+              );
+              $my_query = new WP_Query( $uslugi );
+              if( $my_query->have_posts() ){
+              while( $my_query->have_posts() ) {
+                $my_query->the_post();
+              ?>
               <div class="swiper-slide"> 
                 <div class="ind-slider__block-slider-item">
-                  <div class="ind-slider__block-slider-item-img"> <img src="<?php bloginfo('template_directory'); ?>/img/slider-9.png" alt="img"></div>
+                  <div class="ind-slider__block-slider-item-img"> <img src="<?php the_post_thumbnail_url(); ?>" alt="img"></div>
                   <div class="ind-slider__block-slider-item-text"> 
-                    <div class="ind-slider__block-slider-item-title">Хранение шин</div>
-                    <div class="ind-slider__block-slider-item-text">Надежное хранение шин в специально оборудованных складах</div><a class="ind-slider__block-slider-item-link" href="#">
+                    <div class="ind-slider__block-slider-item-title"><?php the_title(); ?></div>
+                    <div class="ind-slider__block-slider-item-text"><?php the_excerpt(); ?></div><a class="ind-slider__block-slider-item-link" href="#">
                        <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M2.5978 0V2.38704H13.5932L0 14.3474L1.82215 16.0303L15.4154 4.0699V14.2248H18V0H2.5978Z" fill="white"/>
 </svg></a>
                   </div>
                 </div>
               </div>
-              <div class="swiper-slide"> 
-                <div class="ind-slider__block-slider-item">
-                  <div class="ind-slider__block-slider-item-img"> <img src="<?php bloginfo('template_directory'); ?>/img/slider-10.png" alt="img"></div>
-                  <div class="ind-slider__block-slider-item-text"> 
-                    <div class="ind-slider__block-slider-item-title">Заправка автокондиционеров</div>
-                    <div class="ind-slider__block-slider-item-text">Качественная заправка автокондиционера на итальянском оборудовании</div><a class="ind-slider__block-slider-item-link" href="#">
-                       <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.5978 0V2.38704H13.5932L0 14.3474L1.82215 16.0303L15.4154 4.0699V14.2248H18V0H2.5978Z" fill="white"/>
-</svg></a>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide"> 
-                <div class="ind-slider__block-slider-item">
-                  <div class="ind-slider__block-slider-item-img"> <img src="<?php bloginfo('template_directory'); ?>/img/slider-11.png" alt="img"></div>
-                  <div class="ind-slider__block-slider-item-text"> 
-                    <div class="ind-slider__block-slider-item-title">Ремонт автокондиционеров</div>
-                    <div class="ind-slider__block-slider-item-text">Недорогая и быстрая вулканизация шин с пожизненной гарантией</div><a class="ind-slider__block-slider-item-link" href="#">
-                       <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.5978 0V2.38704H13.5932L0 14.3474L1.82215 16.0303L15.4154 4.0699V14.2248H18V0H2.5978Z" fill="white"/>
-</svg></a>
-                  </div>
-                </div>
-              </div>
+<?php }wp_reset_postdata();} ?>
+
             </div>
           </div>
           <div class="swiper-controls display-n" id="headerSliderTabsControlsSlider-3">
